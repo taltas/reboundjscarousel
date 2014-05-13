@@ -11,6 +11,8 @@ This is an implementation of the carousel seen at that site, wrapped into a cust
 TODO:
 
 Tidyup code
+
 Test
+
 Add documentation
 
