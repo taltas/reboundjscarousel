@@ -98,7 +98,7 @@
 				} 
 								
 				// Hide the off-screen images so they don't reveal themselves if you resize the browser
-				val.style['opacity'] = (slideProgress > 0) ? 1.0 : 0.0;
+				val.style['opacity'] = (slideProgress > 0) ? 1.0 : 1.0;
 
 				// Show the current tab as black, others grey
 				var tabOpacity = springs.transitionForProgressInRange(utils.clampedProgress(slideProgress),0.2,1,0);
