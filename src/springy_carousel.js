@@ -98,7 +98,7 @@
 				} 
 								
 				// Hide the off-screen images so they don't reveal themselves if you resize the browser
-				val.style['opacity'] = (slideProgress > 0) ? 1.0 : 1.0;
+				val.style['opacity'] = (slideProgress > 0) ? 1.0 : 0.0;
 
 				// Show the current tab as black, others grey
 				var tabOpacity = springs.transitionForProgressInRange(utils.clampedProgress(slideProgress),0.2,1,0);
@@ -117,8 +117,8 @@
 		
 		
 		$(settings.slidesSelector).each(function(i, val) {
-			val.style['webkitTransform'] = 'translate3d(' + springyCarouselGlobals.viewport.viewportWidth * i - 250 + 'px, 0, 0)';	
-			val.style['MozTransform'] = 'translate3d(' + springyCarouselGlobals.viewport.viewportWidth * i - 250 + 'px, 0, 0)';
+			val.style['webkitTransform'] = 'translate3d(' + (springyCarouselGlobals.viewport.viewportWidth * i) - 350 + 'px, 0, 0)';	
+			val.style['MozTransform'] = 'translate3d(' + (springyCarouselGlobals.viewport.viewportWidth * i) - 350 + 'px, 0, 0)';
 			slides[i] = val;
 		});
 		
