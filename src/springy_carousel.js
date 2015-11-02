@@ -117,8 +117,8 @@
 		
 		
 		$(settings.slidesSelector).each(function(i, val) {
-			val.style['webkitTransform'] = 'translate3d(' + springyCarouselGlobals.viewport.viewportWidth * i + 'px, 0, 0)';	
-			val.style['MozTransform'] = 'translate3d(' + springyCarouselGlobals.viewport.viewportWidth * i + 'px, 0, 0)';
+			val.style['webkitTransform'] = 'translate3d(' + springyCarouselGlobals.viewport.viewportWidth * i - 250 + 'px, 0, 0)';	
+			val.style['MozTransform'] = 'translate3d(' + springyCarouselGlobals.viewport.viewportWidth * i - 250 + 'px, 0, 0)';
 			slides[i] = val;
 		});
 		
