@@ -104,15 +104,23 @@
 				} 
               
               
-                if (currentSlide == i){
-                  val.style['opacity'] = 1.0;
-                }
-                else if((i==currentSlide+1||i==currentSlide-1) || slideProgress > 0 ){
-                  val.style['opacity'] = 1.0;
-                }
-                else{
-                  val.style['opacity'] = 0.0;
-                }
+//                if (currentSlide == i){
+//                  val.style['opacity'] = 1.0;
+//                }
+//                else if((i==currentSlide+1||i==currentSlide-1) && slideProgress > 0 ){
+//                  val.style['opacity'] = 1.0;
+//                }
+//                else{
+//                  val.style['opacity'] = 0.0;
+//                }
+              
+                  if (slideProgress <= 1.5 && slideProgress >= -0.5){
+                      val.style['opacity'] = 1.0;
+                  }
+                  else{
+                      val.style['opacity'] = 0.0;
+                  }
+                    
               
 //                else if (currentSlide == 0 && (i!=1 || i==0)){
 //                  val.style['opacity'] = 0.0;
