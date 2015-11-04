@@ -81,8 +81,8 @@
 		
 		
 		springs.setupMainSpring(settings.frictionAndTension.carousel.friction,settings.frictionAndTension.carousel.tension, function(xTranslation,progress,spring){
-			springyCarouselGlobals.navigation.nav.style['webkitTransform'] = 'translate3d(' + xTranslation + 'px, 0, 0)';
-			springyCarouselGlobals.navigation.nav.style['MozTransform'] = 'translate3d(' + xTranslation + 'px, 0, 0)';
+			//springyCarouselGlobals.navigation.nav.style['webkitTransform'] = 'translate3d(' + xTranslation + 'px, 0, 0)';
+			//springyCarouselGlobals.navigation.nav.style['MozTransform'] = 'translate3d(' + xTranslation + 'px, 0, 0)';
 			
 			// Other transitions
 			$(settings.slidesSelector).each(function(i, val) {
