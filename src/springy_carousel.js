@@ -59,6 +59,7 @@
  		var settings = $.extend( {}, defaults, options );
 
 		var $nav_items = null;
+      
 		
 		
 		
@@ -81,13 +82,13 @@
 		
 		
 		springs.setupMainSpring(settings.frictionAndTension.carousel.friction,settings.frictionAndTension.carousel.tension, function(xTranslation,progress,spring){
-			//springyCarouselGlobals.navigation.nav.style['webkitTransform'] = 'translate3d(' + xTranslation + 'px, 0, 0)';
-			//springyCarouselGlobals.navigation.nav.style['MozTransform'] = 'translate3d(' + xTranslation + 'px, 0, 0)';
+//			springyCarouselGlobals.navigation.nav.style['webkitTransform'] = 'translate3d(' + xTranslation + 'px, 0, 0)';
+//			springyCarouselGlobals.navigation.nav.style['MozTransform'] = 'translate3d(' + xTranslation + 'px, 0, 0)';
 			
 			// Other transitions
 			$(settings.slidesSelector).each(function(i, val) {
 				var slideProgress = 1 - Math.abs(progress - i);
-				
+				currentSlide = springyCarouselGlobals.carousel.currentPage
 				// Slide and scale the images
 				if (slideProgress > 0) { // Only bother if the slide is visible
 					// Slide and scale
@@ -95,10 +96,37 @@
 					var scale = springs.transitionForProgressInRange(slideProgress,0.6,1.0);
 					val.style['webkitTransform'] = 'translate3d(' + x + 'px, 0, 0) scale(' + scale +')';
 					val.style['MozTransform'] = 'translate3d(' + x + 'px, 0, 0) scale(' + scale +')';
+                  
+                    
+                  
+
+                      
 				} 
-								
+              
+              
+                if (currentSlide == i){
+                  val.style['opacity'] = 1.0;
+                }
+                else if((i==currentSlide+1||i==currentSlide-1) || slideProgress > 0 ){
+                  val.style['opacity'] = 1.0;
+                }
+                else{
+                  val.style['opacity'] = 0.0;
+                }
+              
+//                else if (currentSlide == 0 && (i!=1 || i==0)){
+//                  val.style['opacity'] = 0.0;
+//                }
+//
+//                else if (currentSlide!=0 && (i!=currentSlide+1 || i!=currentSlide-1)){
+//                  val.style['opacity'] = 0.0;
+//                }
+//                else{
+//                  val.style['opacity'] = 1.0;
+//                }
+//								
 				// Hide the off-screen images so they don't reveal themselves if you resize the browser
-				val.style['opacity'] = (slideProgress > 0) ? 1.0 : 0.0;
+//                val.style['opacity'] = (slideProgress > 0) ? 1.0 : 0.0;
 
 				// Show the current tab as black, others grey
 				var tabOpacity = springs.transitionForProgressInRange(utils.clampedProgress(slideProgress),0.2,1,0);
