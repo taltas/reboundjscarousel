@@ -93,8 +93,8 @@
 					// Slide and scale
 					var x = (i * springyCarouselGlobals.viewport.viewportWidth) - (progress * springyCarouselGlobals.viewport.viewportWidth);
 					var scale = springs.transitionForProgressInRange(slideProgress,0.6,1.0);
-					//val.style['webkitTransform'] = 'translate3d(' + x + 'px, 0, 0) scale(' + scale +')';
-					//val.style['MozTransform'] = 'translate3d(' + x + 'px, 0, 0) scale(' + scale +')';
+					val.style['webkitTransform'] = 'translate3d(' + x + 'px, 0, 0) scale(' + scale +')';
+					val.style['MozTransform'] = 'translate3d(' + x + 'px, 0, 0) scale(' + scale +')';
 				} 
 								
 				// Hide the off-screen images so they don't reveal themselves if you resize the browser
