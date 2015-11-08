@@ -200,14 +200,30 @@
 			});
 		});
       
-        // Behavior when clicking on a carouself item.
+        // Behavior when clicking on a carouself item. BUGGY!
 //        $(settings.slidesSelector).each(function(i, val){
 //            $(val).click(function(event) {
 //                event.stopPropagation();
 //				funcs.selectTabIndex(i, true);
 //			});
 //        });
-			
+      
+        
+        // BUG WORK AROUND!!!!!!!!
+        ////////// //go to last slide (bug work around)  ///////
+        $(settings.navigationSlider+' li').last().click()
+
+        setTimeout(function(){
+        //    mid = ($('#slides li').length-1)/2;
+
+          //  //go to middle slide
+          $(settings.navigationSlider+' li').slice(($(settings.slidesSelector).length-1)/2 , ($(settings.slidesSelector).length-1)/2+1).click();
+          //    springy_carousel.goToPage(($('#slides li').length-1)/2)
+        },2000)
+        // BUG WORK AROUND END!!!!!!!!
+        
+        
+
 			
 			
 		//declare public methods
