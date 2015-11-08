@@ -164,7 +164,7 @@
 		$(settings.slidesSelector).each(function(i, val) {
 			val.style['webkitTransform'] = 'translate3d(' + (springyCarouselGlobals.viewport.viewportWidth * i) - 350 + 'px, 0, 0)';	
 			val.style['MozTransform'] = 'translate3d(' + (springyCarouselGlobals.viewport.viewportWidth * i) - 350 + 'px, 0, 0)';
-			slides[i] = val;
+//			slides[i] = val;
 		});
 		
 		// Select the first tab
