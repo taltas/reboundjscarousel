@@ -61,7 +61,7 @@
 		var $nav_items = null;
       
 		
-		
+
 		
 		
 		
@@ -115,11 +115,20 @@
 //                }
               
                   if (slideProgress <= 1.5 && slideProgress >= -0.5){
-                      val.style['opacity'] = 1.0;
+                      
+                      val.style['display'] = 'block';
+                      if(i==currentSlide){
+                        val.style['opacity'] = 1.0;  
+                      }else{
+                        val.style['opacity'] = 0.5;
+                      }
                   }
                   else{
                       val.style['opacity'] = 0.0;
+                      val.style['display'] = 'none';
                   }
+              
+              
                     
               
 //                else if (currentSlide == 0 && (i!=1 || i==0)){
@@ -190,6 +199,14 @@
 				springyCarouselGlobals.springs.navigationSpring.setEndValue(0);
 			});
 		});
+      
+        // Behavior when clicking on a carouself item.
+//        $(settings.slidesSelector).each(function(i, val){
+//            $(val).click(function(event) {
+//                event.stopPropagation();
+//				funcs.selectTabIndex(i, true);
+//			});
+//        });
 			
 			
 			
