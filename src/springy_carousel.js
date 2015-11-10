@@ -1,7 +1,14 @@
 (function( $ ) {
 	
 
-	
+	var mouseDown = false;
+  
+    document.body.onmousedown = function() { 
+        mouseDown = true;
+    }
+    document.body.onmouseup = function() {
+        mouseDown = false;
+    }
  
     jQuery.fn.springyCarousel = function(options) {
       
@@ -204,6 +211,13 @@
 		}, false);
 		
 		item.addEventListener('mousemove', function(e) {
+//            console.log('mouse moving'+springyCarouselGlobals.dragging.isDragging)
+            
+//            if (mouseDown) {
+//                console.log('continue drag'+mouseDown);
+//              continueDragging(e.clientX);
+//            }
+          
 			if (springyCarouselGlobals.dragging.isDragging)
 				continueDragging(e.clientX);
 		}, false);
@@ -224,16 +238,16 @@
 	
 	
 	
-	startDragging = function(x) {
-        console.log ('start')
+	var startDragging = function(x) {
+//        console.log ('start')
 		lastX = x;
 		springyCarouselGlobals.dragging.isDragging = true;
-		springyCarouselGlobals.viewport.viewportWidth = $("#wrapper").innerWidth();
+		springyCarouselGlobals.viewport.viewportWidth = $(settings.carouselWrapperSelector).innerWidth();
 		springyCarouselGlobals.springs.mainSpring.setAtRest();
 	}
 	
-	continueDragging = function(x) {
-        console.log ('continue')
+	var continueDragging = function(x) {
+//        console.log ('continue')
 		panVelocity = x - lastX;
 		lastX = x;
 		
@@ -249,7 +263,7 @@
 		springyCarouselGlobals.springs.mainSpring.setAtRest();
 	}
 	
-	endDragging = function() {
+	var endDragging = function() {
 		var currentPosition = springyCarouselGlobals.springs.mainSpring.getCurrentValue();
 		var restPosition = springyCarouselGlobals.carousel.currentPage;
 		
