@@ -387,7 +387,7 @@
 	        slidesSelector : '#slides li',
 	        navigationSlider:'#nav',
 	        navigation:{
-	        	keys:true,
+	        	keys:false,
 	        	drag:true
 	        },
 	        frictionAndTension:{
@@ -439,10 +439,16 @@
 				// Slide and scale the images
 				if (slideProgress > 0) { // Only bother if the slide is visible
 					// Slide and scale
+                    //768 px, show images either size
+                    divider = 1;
+                    if ($(window).width() <= 768){
+                      divider = 1.5; // ratio to divide translate of slide
+                    }
+                    
 					var x = (i * springyCarouselGlobals.viewport.viewportWidth) - (progress * springyCarouselGlobals.viewport.viewportWidth);
 					var scale = springs.transitionForProgressInRange(slideProgress,0.6,1.0);
-					val.style['webkitTransform'] = 'translate3d(' + x + 'px, 0, 0) scale(' + scale +')';
-					val.style['MozTransform'] = 'translate3d(' + x + 'px, 0, 0) scale(' + scale +')';
+					val.style['webkitTransform'] = 'translate3d(' + x/divider + 'px, 0, 0) scale(' + scale +')';
+					val.style['MozTransform'] = 'translate3d(' + x/divider + 'px, 0, 0) scale(' + scale +')';
                   
                     
                   
