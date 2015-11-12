@@ -118,7 +118,32 @@
 	
 	
 	
-	
+	inputEvents.addLeftRightButtonSupport = function(){
+      
+      // when you click on the left and right arrow for this carousel
+      $(settings.carouselWrapperSelector).siblings('.arrow-left, .arrow-right').on('click', function(e){
+        arrow = $(this).attr('class')
+        
+        // if you lick on the right arrow
+        if(arrow=='arrow-right'){
+          // if you aren't already at the end
+          //console.log('right arrow')
+          if(springyCarouselGlobals.carousel.currentPage!=$(settings.slidesSelector).length-1){
+            $(settings.navigationSlider+' li').eq(springyCarouselGlobals.carousel.currentPage+1).click()
+          }
+          
+        }
+        else{
+          console.log('left arrow')
+          if(springyCarouselGlobals.carousel.currentPage!=0){
+            $(settings.navigationSlider+' li').eq(springyCarouselGlobals.carousel.currentPage-1).click()
+          }
+        }
+        
+        
+      })
+    
+    }
 	
 	
 	
@@ -534,6 +559,9 @@
 		if(settings.navigation.drag){
 			inputEvents.addDragSupport($(settings.slidesSelector).parent()[0])
 		}
+        
+      
+        inputEvents.addLeftRightButtonSupport();
 		
 		
 		
