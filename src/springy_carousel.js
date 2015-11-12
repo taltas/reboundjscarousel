@@ -466,8 +466,8 @@
 					// Slide and scale
                     //768 px, show images either size
                     divider = 1;
-                    if ($(window).width() <= 768){
-                      divider = 1.5; // ratio to divide translate of slide
+                    if ($(window).width() >= 768){
+                      divider = 1.1; // ratio to divide translate of slide
                     }
                     
 					var x = (i * springyCarouselGlobals.viewport.viewportWidth) - (progress * springyCarouselGlobals.viewport.viewportWidth);
