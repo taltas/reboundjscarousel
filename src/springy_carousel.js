@@ -127,17 +127,29 @@
         // if you lick on the right arrow
         if(arrow=='arrow-right'){
           // if you aren't already at the end
-          //console.log('right arrow')
           if(springyCarouselGlobals.carousel.currentPage!=$(settings.slidesSelector).length-1){
             $(settings.navigationSlider+' li').eq(springyCarouselGlobals.carousel.currentPage+1).click()
           }
+          //otherwise if you are at the end, go back to the beginnging
+          else{
+            $(settings.navigationSlider+' li').eq(0).click()
+          }
           
         }
+        
+        //otherwise you have clicked on the left arrow
         else{
-          console.log('left arrow')
+//          console.log('left arrow')
+          // if you aren't already at the end
           if(springyCarouselGlobals.carousel.currentPage!=0){
             $(settings.navigationSlider+' li').eq(springyCarouselGlobals.carousel.currentPage-1).click()
           }
+          //otherwise if you are at the end, go to the end
+          else{
+            $(settings.navigationSlider+' li').last().click()
+            
+          }
+          
         }
         
         
