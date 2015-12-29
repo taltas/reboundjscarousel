@@ -225,14 +225,14 @@
 	inputEvents.addDragSupport = function(item){
 		item.addEventListener('touchstart', function(e) {
 			var touch = e.touches[0];
-			startDragging(touch.pageX);
+			startDragging(touch.pageX, touch.pageY);
 		}, false);
 		
 		item.addEventListener('touchmove', function(e) {
 		    e.preventDefault(); // Stop vertical rubberbanding on iOS
 		
 			var touch = e.touches[0];	
-			continueDragging(touch.pageX);
+			continueDragging(touch.pageX, touch.pageY);
 		}, false);
 		
 		item.addEventListener('touchend', function(e) {
@@ -244,7 +244,7 @@
 		}, false);
 		
 		item.addEventListener('mousedown', function(e) {
-			startDragging(e.clientX);
+			startDragging(e.clientX, e.clientY);
 		}, false);
 		
 		item.addEventListener('mousemove', function(e) {
@@ -256,7 +256,7 @@
 //            }
           
 			if (springyCarouselGlobals.dragging.isDragging)
-				continueDragging(e.clientX);
+				continueDragging(e.clientX, e.clientY);
 		}, false);
 		
 		item.addEventListener('mouseup', function(e) {
@@ -275,18 +275,39 @@
 	
 	
 	
-	var startDragging = function(x) {
+	var startDragging = function(x,y) {
+        
 //        console.log ('start')
 		lastX = x;
+      	lastY = y;
+      
 		springyCarouselGlobals.dragging.isDragging = true;
 		springyCarouselGlobals.viewport.viewportWidth = $(settings.carouselWrapperSelector).innerWidth();
 		springyCarouselGlobals.springs.mainSpring.setAtRest();
 	}
 	
-	var continueDragging = function(x) {
+	var continueDragging = function(x,y) {
 //        console.log ('continue')
 		panVelocity = x - lastX;
 		lastX = x;
+      
+        
+      
+        vertVelocity = y  - lastY;
+        lastY = y;
+      
+//        console.log('vertVelocity: '+ vertVelocity +', panVelocity: ' +panVelocity);
+      
+        // horizontal scrolling on carousel is here, looks to see if the vert velocity is greater then 3 times the horizontal velocity to fire off scroll
+        if ( (Math.abs(vertVelocity)) > 3*Math.abs(panVelocity) ){
+          
+          $('html,body').stop().animate({
+            scrollTop: '+=' + (-6*vertVelocity)
+            //animate and amplify by a factor of 6 :)
+          });
+          
+          return true;
+        } 
 		
 	    var progress = springs.progressForValueInRange(panVelocity,0,-springyCarouselGlobals.viewport.viewportWidth);
 	    
